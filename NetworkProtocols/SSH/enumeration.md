@@ -6,7 +6,7 @@ ls /usr/share/nmap/scripts/*ssh*.nse
 ```
 
 > Nmap Script
-export IP=xxx
+**export IP=xxx**
 
 ```bash
 nmap -p 22 --script ssh-hostkey $IP
