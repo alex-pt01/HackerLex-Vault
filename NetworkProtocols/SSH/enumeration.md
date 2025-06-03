@@ -3,7 +3,7 @@
 nc -vn $IP 22
 ssh-audit $IP 22
 ```
-### 🔐 SSH  with Nmap
+### SSH  with Nmap
 
 > Nmap
 ```bash
