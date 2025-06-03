@@ -1,10 +1,10 @@
-## 🔐 Connect with Terminal
+### Connect with Terminal
 ```bash
 ssh username@X.X.X.X
 ssh -i path/to/private_key user@target-ip
 ```
 
-## Notes
+### Notes
 > If hydra is not working because of the auth method that SSH is using
 ```bash
 sudo mousepad /etc/ssh/ssh_config

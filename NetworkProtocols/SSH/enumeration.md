@@ -1,9 +1,9 @@
-## 🔐 Banner Grabbing & Audit
+### Banner Grabbing & Audit
 ```bash
 nc -vn $IP 22
 ssh-audit $IP 22
 ```
-## 🔐 SSH  with Nmap
+### 🔐 SSH  with Nmap
 
 > Nmap
 ```bash
@@ -29,7 +29,7 @@ nmap -p 22 --script sshv1 $IP
 nmap -p 22 --script ssh-run --script-args="user=root,pass=toor,command=uname -a" $IP
 ```
 
-## 🔐 SSH Enumeration with Metasploit
+### SSH Enumeration with Metasploit
 
 ```bash
 msfconsole
