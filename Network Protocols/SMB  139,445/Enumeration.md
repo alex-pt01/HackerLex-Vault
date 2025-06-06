@@ -33,6 +33,12 @@ enum4linux -r -u "USERNAME" -p "PASSWORD" $IP
 ```bash
 smbmap -H IP -u USERNAME -p PASS
 smbmap -u USERNAME -p "" -d . -H $IP
+smbmap -H $IP -u USERNAME -p "PASSWORD" -x 'ipconfig'
+smbmap -H $IP -u USERNAME -p "PASSWORD" -r 'C$'
+smbmap -H $IP -u USERNAME -p "PASSWORD" -L
+
+smbmap -H $IP -u USERNAME -p "PASSWORD" --upload 'file_location/backdoor' 'C$\backdoor'
+smbmap -H $IP -u USERNAME -p "PASSWORD" --download 'C$\FILE'
 ```
 
 ### Nmap
@@ -55,6 +61,12 @@ ls -la /usr/share/nmap/scripts | grep -e "smb"
 nmap --script=smb-os-discovery -p 445 $IP
 nmap -p445 --script smb-protocols $IP
 nmap --script smb-enum-users.nse -p445 IP
+nmap -p445 --script smb-enum-shares IP
+
+nmap -p445 --script smb-enum-users,smb-ls --script-args smbusername=USERNAME,smbpassword=PASSWORD IP
+nmap -p445 --script smb-domains --script-args smbusername=USERNAME,smbpassword=PASSWORD IP
+nmap -p445 --script smb-enum-groups --script-args smbusername=USERNAME,smbpassword=PASSWORD IP
+nmap -p445 --script smb-enum-services --script-args smbusername=USERNAME,smbpassword=PASSWORD IP
 ```
 
 ### Enumeration with Metasploit

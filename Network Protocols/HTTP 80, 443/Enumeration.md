@@ -25,12 +25,6 @@ ls -la /usr/share/nmap/scripts | grep -e "http"
 
 nmap IP -sV -p80 --script http-enum
 nmap IP -sV -p80 --script http-headers
-````
-
-### Webdav
-```bash
-nmap IP -sV -p80 --script http-webdav-scan --script-args http-methods.url-path=/webdav/
-nmap IP -sV -p80 --script http-methods --script-args http-methods.url-path=/webdav/
 ```
 
 > Use browsh when we don’t have a browser
@@ -61,3 +55,18 @@ use auxiliary/scanner/http/dir_listing
 use auxiliary/scanner/http/http_put
 ```
 
+
+### Webdav
+```bash
+nmap IP -sV -p80 --script http-webdav-scan --script-args http-methods.url-path=/webdav/
+nmap IP -sV -p80 --script http-methods --script-args http-methods.url-path=/webdav/
+```
+
+### Shellshock - gettime.cgi
+```bash
+http://IP/gettime.cgi
+
+nmap -sV -p 80 --script=http-shellshock --script-args "http-shellshock.uri=/gettime.cgi" IP
+
+use exploit/multi/http/apache_mod_cgi_bash_env_exec
+```
