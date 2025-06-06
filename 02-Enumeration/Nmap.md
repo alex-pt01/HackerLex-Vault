@@ -18,3 +18,21 @@
 | **OS Fingerprinting examples** | `nmap -O -Pn IP`<br>`nmap -T4 -sS -sV -O --osscan-guess -p- $IP`<br>`nmap -T4 -sS -sV --version-intensity 8 -O --osscan-guess -p- $IP` |
 | **Port state "filtered" meaning** | Target is up but port filtered by firewall                                                        |
 | **Import Nmap scan to Metasploit (MSF)** | Run Nmap: `nmap -sV -Pn -oX myscan.xml IP` <br> In MSF console: `db_import myscan.xml` <br> `db_status` to check DB |
+
+
+#### Use decoy IPs to mask the true source
+
+```bash
+nmap -Pn -sS -sV -p22,80 -f --data-length 50 -D IP1,IP2 TARGET_IP
+
+//Fragmentation (-f): Splits packets to evade some firewalls/IDS.
+//Data length (--data-length): Adds extra data to alter packet size and avoid detection.
+```
+
+#### 🛡️ Evasion Techniques: IDS & Firewalls
+
+>If a port is marked as **filtered**, the target is likely up and protected by a firewall. (You can also try: `--script=discovery` for more detection.)
+
+```bash
+nmap -Pn -sA -pX,Y IP
+```
